@@ -1,0 +1,26 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  macos:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 编译
+        run: ./build.sh
+
+      - name: 自检
+        run: ./ClipShelf.app/Contents/MacOS/ClipShelf --selftest
+
+      - name: 打包产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: ClipShelf.app
+          path: ClipShelf.app
+          if-no-files-found: error

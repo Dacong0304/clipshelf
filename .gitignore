@@ -1,0 +1,12 @@
+# 构建产物
+ClipShelf.app/
+build/
+dist/
+*.iconset
+
+# 设计阶段的中间产物（design/icon.py 可随时重新生成）
+docs/icon-b.png
+docs/icon-preview.png
+
+# 系统垃圾
+.DS_Store
